@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Rebalancer.Cli/Rebalancer.Cli.csproj" />
+  <Project Path="Rebalancer.Core/Rebalancer.Core.csproj" />
+  <Project Path="Rebalancer.Tests/Rebalancer.Tests.csproj" />
+</Solution>
