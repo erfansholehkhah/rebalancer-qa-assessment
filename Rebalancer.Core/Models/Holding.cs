@@ -14,14 +14,14 @@ namespace Rebalancer.Core.Models
 
         public decimal TargetVariance => CurrentPercent - TargetPercent;
 
-        public Holding(string symbol,decimal targetPercent,decimal currentPercent,decimal unitPrice) 
+        public Holding(string symbol, decimal targetPercent, decimal currentPercent, decimal unitPrice)
         {
             Symbol = symbol;
-            TargetPercent =  targetPercent;
+            TargetPercent = targetPercent;
             CurrentPercent = currentPercent;
             UnitPrice = unitPrice;
 
         }
-        
+
     }
 }
