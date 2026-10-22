@@ -1,12 +1,8 @@
-﻿
-
-using System.Diagnostics.SymbolStore;
-
-namespace Rebalancer.Core.Models
+﻿namespace Rebalancer.Core.Models
 {
     public class Holding
     {
-        public string Symbol { get; }
+        public string StockName { get; }
         public decimal TargetPercent { get; }
         public decimal CurrentPercent { get; }
 
@@ -14,9 +10,9 @@ namespace Rebalancer.Core.Models
 
         public decimal TargetVariance => CurrentPercent - TargetPercent;
 
-        public Holding(string symbol, decimal targetPercent, decimal currentPercent, decimal unitPrice)
+        public Holding(string stockName, decimal targetPercent, decimal currentPercent, decimal unitPrice)
         {
-            Symbol = symbol;
+            StockName = stockName;
             TargetPercent = targetPercent;
             CurrentPercent = currentPercent;
             UnitPrice = unitPrice;

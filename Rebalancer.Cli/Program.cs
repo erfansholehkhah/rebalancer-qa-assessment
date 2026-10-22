@@ -1,4 +1,5 @@
-﻿using Rebalancer.Core.Models;
+﻿using Rebalancer.Core.Calculation;
+using Rebalancer.Core.Models;
 namespace Rebalancer.Cli
 {
     internal class Program
@@ -14,12 +15,17 @@ namespace Rebalancer.Cli
                 new Holding ("HD",20,20,70),
                 
             });
-            Console.WriteLine($"Account{account.AccountId}, total asset {account.TotalAssets}");
+            IRebalanceCalculator calculator = new RebalanceCalculator();
+            var result = calculator.Calculate(account);
 
-            foreach(var holding in account.Holdings) 
+            foreach (var trade in result.Trades) 
             {
-                Console.WriteLine($"{holding.Symbol}:  Variance {holding.TargetVariance}");
+                Console.WriteLine($"{trade.StockName,-5} {trade.Action,-5} {trade.Shares,3} shares  ${trade.TradeValue}");
             }
+
+            Console.WriteLine();
+            Console.WriteLine($"Total sells: ${result.TotalSellValue}");
+            Console.WriteLine($"Total buys:  ${result.TotalBuyValue}");
         }
     }
 }
