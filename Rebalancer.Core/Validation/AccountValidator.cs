@@ -4,7 +4,8 @@ using Rebalancer.Core.Models;
 
 namespace Rebalancer.Core.Validation;
 
-public class AccountValidator : IAccountValidator
+public class AccountValidator : IAccountValidator 
+    // Fully asked AI  to create this file 
 {
     
     private static readonly Regex StockNamePattern = new(@"^[A-Z]{1,5}(\.[A-Z])?$");
