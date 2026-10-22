@@ -1,13 +1,21 @@
 ﻿
 
 using Rebalancer.Core.Models;
+using Rebalancer.Core.Validation;
 
 namespace Rebalancer.Core.Calculation
 {
     public class RebalanceCalculator : IRebalanceCalculator
     {
+
+        private readonly IAccountValidator _validator;
+        public RebalanceCalculator (IAccountValidator  validator) 
+        {
+            _validator = validator;
+        }
         public RebalanceResult Calculate(Account account)
         {
+            _validator.Validate(account);
             var trades = account.Holdings
                 .Select(Holding => CreateTrade(Holding, account.TotalAssets)).ToList();
             return new RebalanceResult(account.AccountId, trades);

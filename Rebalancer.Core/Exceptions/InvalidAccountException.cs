@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Rebalancer.Core.Exceptions
 {
-    internal class InvalidAccountException : RebalanceException
+    public class InvalidAccountException : RebalanceException
     {
         public IReadOnlyList<string> Errors { get; }
 

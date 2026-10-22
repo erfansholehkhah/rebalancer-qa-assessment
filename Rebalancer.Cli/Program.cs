@@ -1,24 +1,30 @@
 ﻿using Rebalancer.Core.Calculation;
+using Rebalancer.Core.Exceptions;
 using Rebalancer.Core.Models;
-namespace Rebalancer.Cli
+using Rebalancer.Core.Validation;
+
+namespace Rebalancer.Cli;
+
+internal class Program
 {
-    internal class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        var account = new Account("ABC", 100_000m, new List<Holding>
         {
-            var account = new Account("ABC", 100_000m, new List<Holding>
-            {
-                new Holding ("IBM",20,10,150),
-                new Holding ("MSTF",20,20,90),
-                new Holding ("ORCL",20,30,220),
-                new Holding ("AAPL",20,20,450),
-                new Holding ("HD",20,20,70),
-                
-            });
-            IRebalanceCalculator calculator = new RebalanceCalculator();
+            new Holding("IBM", 20, 10, 150),
+            new Holding("MSFT", 20, 20, 90),
+            new Holding("ORCL", 20, 30, 220),
+            new Holding("AAPL", 20, 20, 450),
+            new Holding("HD", 20, 20, 70)
+        });
+
+        IRebalanceCalculator calculator = new RebalanceCalculator(new AccountValidator());
+
+        try
+        {
             var result = calculator.Calculate(account);
 
-            foreach (var trade in result.Trades) 
+            foreach (var trade in result.Trades)
             {
                 Console.WriteLine($"{trade.StockName,-5} {trade.Action,-5} {trade.Shares,3} shares  ${trade.TradeValue}");
             }
@@ -26,6 +32,14 @@ namespace Rebalancer.Cli
             Console.WriteLine();
             Console.WriteLine($"Total sells: ${result.TotalSellValue}");
             Console.WriteLine($"Total buys:  ${result.TotalBuyValue}");
+        }
+        catch (InvalidAccountException ex)
+        {
+            Console.WriteLine("The account is invalid:");
+            foreach (var error in ex.Errors)
+            {
+                Console.WriteLine($"  - {error}");
+            }
         }
     }
 }
