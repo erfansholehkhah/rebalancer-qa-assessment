@@ -27,7 +27,7 @@ namespace Rebalancer.Tests
         [TestCase("AAPL", TradeAction.Keep, 0)]
         [TestCase("HD", TradeAction.Keep, 0)]
 
-        public void CalculateAccountAbcReturnsCoorectActionAndShares
+        public void Calculate_AccountAbc_Returns_Correct_Action_And_Shares
             (string stockName, TradeAction expectedAction, int expectedShares) 
         {
             var account = CreateAccountAbc();
@@ -38,7 +38,7 @@ namespace Rebalancer.Tests
         }
 
         [Test]
-        public void CalculateAccountAbcReturnOneTradePerStock() 
+        public void Calculate_AccountAbc_ReturnOne_Trade_Per_Stock_Test() 
         {
             var result = _calculator.Calculate(CreateAccountAbc());
             Assert.That(result.Trades, Has.Count.EqualTo(5));
@@ -46,7 +46,7 @@ namespace Rebalancer.Tests
 
 
         [Test]
-        public void CalculateAccountAbcSelltoBuy() 
+        public void Calculate_AccountAbc_Sell_To_Buy_Test() 
         {
             var result = _calculator.Calculate(CreateAccountAbc());
             Assert.That(result.TotalSellValue, Is.EqualTo(9900m));
@@ -72,7 +72,7 @@ namespace Rebalancer.Tests
         }
 
         [Test]
-        public void CalculateMultipleTradesCorrectShares()
+        public void Calculate_Multiple_Trades_Correct_Shares_Test()
         {
            
             var account = new Account("MIX", 50_000m, new List<Holding>
@@ -99,7 +99,7 @@ namespace Rebalancer.Tests
         }
 
         [Test]
-        public void Calculate_TargetZero_SellsAll()
+        public void Calculate_TargetZero_SellsAll_Test()
         {
            
             var account = new Account("EXIT", 10_000m, new List<Holding>
@@ -117,7 +117,7 @@ namespace Rebalancer.Tests
         }
 
         [Test]
-        public void Calculate_Fractional_RoundsDown()
+        public void Calculate_Fractional_RoundsDown_Test()
         {
             
             var account = new Account("ROUND", 10_000m, new List<Holding>
@@ -135,7 +135,7 @@ namespace Rebalancer.Tests
         }
 
         [Test]
-        public void CalculateBelowOneShareNoTrade()
+        public void Calculate_Below_OneShare_NoTrade_Test()
         {
       
             var account = new Account("SMALL", 1_000m, new List<Holding>
