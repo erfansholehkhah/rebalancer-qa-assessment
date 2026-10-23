@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-
-namespace Rebalancer.Core.Exceptions
+﻿namespace Rebalancer.Core.Exceptions
 {
     public class InvalidAccountException : RebalanceException
     {
         public IReadOnlyList<string> Errors { get; }
 
         public InvalidAccountException(IReadOnlyList<string> errors) 
-            : base (" the account is invalid: " + string.Join ("|",errors))
+            : base ("The account is invalid:" + string.Join ("|",errors))
         {
             Errors = errors;   
         }

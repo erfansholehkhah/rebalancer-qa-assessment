@@ -16,9 +16,5 @@ namespace Rebalancer.Core.Validation
             ErrorMessage = errorMessage;
         }
 
-        //What’s a delegate? A variable that holds a function instead of a value.
-        //Func<Holding, bool> = “a function that takes a Holding and returns a bool” (true = valid).
-
-
     }
 }

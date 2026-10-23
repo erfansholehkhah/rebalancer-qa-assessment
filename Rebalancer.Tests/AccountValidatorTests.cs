@@ -22,7 +22,7 @@ public class AccountValidatorTests
     }
 
     [Test]
-    public void Validate_PriceZero_Throws_Test()
+    public void Validate_Price_Zero_Throws_Test()
     {
         var account = new Account("BAD", 10_000m, new List<Holding>
         {
@@ -110,7 +110,7 @@ public class AccountValidatorTests
     }
 
     [Test]
-    public void Validate_SeveralProblems_ReportsAll_Test()
+    public void Validate_Several_Problems_ReportsAll_Test()
     {
        
         var account = new Account("BAD", 0, new List<Holding>

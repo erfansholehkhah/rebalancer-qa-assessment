@@ -17,11 +17,11 @@ namespace Rebalancer.Core.Calculation
         {
             _validator.Validate(account);
             var trades = account.Holdings
-                .Select(Holding => CreateTrade(Holding, account.TotalAssets)).ToList();
+                .Select(holding => CreateTrade(holding, account.TotalAssets)).ToList();
             return new RebalanceResult(account.AccountId, trades);
         }
 
-        public static TradeInstruction CreateTrade(Holding holding, decimal totalAssets)
+        private static TradeInstruction CreateTrade(Holding holding, decimal totalAssets)
         {
             var variance = holding.TargetVariance;
 
