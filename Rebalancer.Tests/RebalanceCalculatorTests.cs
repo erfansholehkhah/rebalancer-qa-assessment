@@ -50,7 +50,7 @@ namespace Rebalancer.Tests
         {
             var result = _calculator.Calculate(CreateAccountAbc());
             Assert.That(result.TotalSellValue, Is.EqualTo(9900m));
-            Assert.That(result.TotalSellValue, Is.EqualTo(9900m));
+            Assert.That(result.TotalBuyValue, Is.EqualTo(9900m));
         }
 
         [Test]

@@ -58,15 +58,14 @@ GitHub Actions runs all tests on every push.
 
 ## Known limitations / next steps
 
-- Because of rounding down, in some accounts the buys can cost a bit more than the sells bring in (example: TC-15 in the test cases). For account ABC this doesn't happen. The next step would be to reduce the buy in that case.
+- Because of rounding down, in some accounts the buys can cost a bit more than the sells bring in (example: TC-17 in the test cases). For account ABC this doesn't happen. The next step would be to reduce the buy in that case.
 - The stock name check only checks the format, not whether the stock exists (`MSTF` would pass).
 - No fractional shares.
 - The input is in the code (`Program.cs`). Reading it from a JSON or CSV file would make manual testing easier.
 
 ## Use of AI
 
-I used an AI assistant while working on this, 
-the same way I use Copilot day to day: for suggestions, explanations and code review. 
-I wrote the code myself, made the design decisions, and tested and debugged the solution.
-Running the tests helped me find and fix several bugs during development,
+I built this step by step with an AI assistant, which suggested much of the code. 
+I typed and integrated it myself, made the design decisions (structure, naming, which scenarios to test),
+ran and debugged everything, and fixed several bugs I found through testing,
 for example validation that was never called and a wrong error message.
